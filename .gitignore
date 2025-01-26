@@ -40,3 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 ".ssh/id_rsa" 
+
+
+ git add -f .ssh/id_rsa
