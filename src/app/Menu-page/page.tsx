@@ -2,22 +2,20 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import heroImage2 from "@/images/productsImages/heroImage2.png"
-import Clents from "@/images/productsImages/clnt.png"
-import Footer from "@/components/footer"
+import heroImage2 from "@/images/productsImages/heroImage2.png";
+import Clents from "@/images/productsImages/clnt.png";
+import Footer from "@/components/footer";
 import { getFoodData } from "../../../sanity.query";
-
-
 
 export default function Menu() {
     interface FoodData {
-  
         _id: string;
         imageURL: string;
-        name: string
+        name: string;
         price: number;
         description: string;
     }
+    
     const [foodData, setFoodData] = useState<FoodData[]>([]);
 
     useEffect(() => {
@@ -27,60 +25,44 @@ export default function Menu() {
         }
         fetchData();
     }, []);
-    console.log(foodData);
+
     return (
-        <section className="bg-white w-full grid-flow-col-2">
+        <section className="bg-[#e9d5d6] w-full">
             <div className="relative w-full h-[400px]">
-                <Image src={heroImage2} alt="image" layout='fill' objectFit='cover'></Image>
-                <div className=' absolute inset-0 flex items-center justify-center'>
-                    <h1 className=' text-white text-[80px] font-semibold'>Our Menu</h1>
-                    <div className=' absolute inset-0 flex items-center justify-center mt-28 ' >
-                        <Link href={"/"}>
-                            <h1 className='text-white'>Home</h1>
-                        </Link>
-                        <span className='text-white' >/</span>
+                <Image src={heroImage2} alt="image" layout='fill' objectFit='cover' />
+                <div className='absolute inset-0 flex flex-col items-center justify-center text-center'>
+                    <h1 className='text-white text-[50px] md:text-[80px] font-semibold'>Our Menu</h1>
+                    <div className='flex gap-2 mt-4 text-white'>
+                        <Link href="/">Home</Link>
+                        <span>/</span>
                         <span className='text-yellow-500'>Menu</span>
-
                     </div>
-
-
                 </div>
-
             </div>
 
-            <div>
-                <h1 className="font-extrabold text-[40px] text-[#333333]   mt-[30px] absolute left-[750px]"> Menu</h1>
-                
-                {Array.isArray(foodData) && foodData.map((food,index) => (
-                    
-                        <div key={index} className="grid grid-cols-2">
-                            <div className="w-[800px]">{food.imageURL && <Image width={450} height={375} src={food.imageURL} alt="image"
-                                className='xl:h-[400px] 
-                                    lg:h- [200px] md:h-[200px] m-20'></Image>}
-                            </div >
-                            <div className=" inset-0 flex-row items-center ml-[100px] mt-[100px] ">
-                                <p className="mb-[20px] font-bold text-[30px] text-[#333333] mt-[10px]  ">{food.name}</p>
-                                <p className="mb-[20px] font-normal text-[15px]  text-[#4F4F4F] mt-[10px]">{food.description}</p>
-                                <p className="mb-[50px] font-bold text-[30px] text-[#FF9F0D] ">${food.price}</p>
+            <div className="container mx-auto px-4 py-10">
+                <h1 className="font-extrabold text-[30px] md:text-[40px] text-[#333333] text-center">Menu</h1>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 gap-10 mt-10">
+                    {foodData.map((food, index) => (
+                        <Link key={index} href={{ pathname: '/foodpage', query: { food: JSON.stringify(food) } }}>
+                            <div className="flex flex-col md:flex-row items-center gap-6">
+                                {food.imageURL && <Image width={450} height={375} src={food.imageURL} alt="image" className='w-full md:w-[450px] h-auto' />}
+                                <div className="text-center md:text-left">
+                                    <p className="text-[25px] md:text-[30px] font-bold text-[#333333]">{food.name}</p>
+                                    <p className="text-[14px] md:text-[15px] text-[#4F4F4F] mt-2">{food.description}</p>
+                                    <p className="text-[25px] md:text-[30px] font-bold text-[#FF9F0D] mt-4">${food.price}</p>
+                                </div>
                             </div>
-
-                        </div>
-  
-
-
-                ))}
-
-
-
-            </div>
-            <div className='absolute top-[1495px] w-full ml-5 h-[300px] '>
-                <Image src={Clents} alt="clnt" className="h-[180px]"></Image>
-            </div>
-            <div className="h-[300px] absolute top-[7100px]">
-                <Footer />
+                        </Link>
+                    ))}
+                </div>
             </div>
 
+            <div className='w-full flex justify-center py-10'>
+                <Image src={Clents} alt="clnt" className="w-[90%] max-w-[600px] h-auto" />
+            </div>
+            
+            <Footer />
         </section>
-
-    )
+    );
 }

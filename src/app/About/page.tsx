@@ -1,159 +1,86 @@
 "use client";
-import Link from 'next/link'
-import Image from "next/image"
-import heroImage2 from "@/images/productsImages/heroImage2.png"
-import Aboutus from "@/images/productsImages/aboutus.png"
- import Whychose from "@/images/productsImages/wcu.png"
- import MarkHenry from "@/images/productsImages/Mark Henry.png"
- import LuckyHelen from "@/images/productsImages/Lucky Helen.png"
- import MoonHenry from "@/images/productsImages/Moon Henry.png"
- import TomMonrow from "@/images/productsImages/Tom Monrow.png"
- import Ellipse6 from "@/images/productsImages/Ellipse 6.png"
-import Footer from "@/components/footer"
+import Link from 'next/link';
+import Image from "next/image";
+import heroImage2 from "@/images/productsImages/heroImage2.png";
+import Aboutus from "@/images/productsImages/aboutus.png";
+import Whychose from "@/images/productsImages/wcu.png";
+import MarkHenry from "@/images/productsImages/Mark Henry.png";
+import LuckyHelen from "@/images/productsImages/Lucky Helen.png";
+import MoonHenry from "@/images/productsImages/Moon Henry.png";
+import TomMonrow from "@/images/productsImages/Tom Monrow.png";
+import Ellipse6 from "@/images/productsImages/Ellipse 6.png";
+import Footer from "@/components/footer";
 
-
- export default function About(){
-    return(
+export default function About() {
+    return (
         <section className="bg-white w-full">
-        <div className="relative w-full h-[400px]">
-            <Image  src={heroImage2} alt="image" layout='fill' objectFit='cover'></Image>
-            <div className=' absolute inset-0 flex items-center justify-center'>
-                <h1 className=' text-white text-[80px] font-semibold'>About Us</h1>
-                <div className=' absolute inset-0 flex items-center justify-center mt-28 ' >
-                    <Link href={"/"}>
-                    <h1 className='text-white'>Home
-                    </h1>
-                    </Link>    
-                    <span className='text-white' >/</span>
-                    <span className='text-[#FF9F0D]'>About</span>              
-                    
+            {/* Hero Section */}
+            <div className="relative w-full h-[400px]">
+                <Image src={heroImage2} alt="Hero Image" layout='fill' objectFit='cover' />
+                <div className='absolute inset-0 flex flex-col items-center justify-center text-white'>
+                    <h1 className='text-[40px] sm:text-[60px] md:text-[80px] font-semibold'>About Us</h1>
+                    <div className='flex gap-2 text-lg mt-2'>
+                        <Link href="/">
+                            <span className='cursor-pointer'>Home</span>
+                        </Link>
+                        <span>/</span>
+                        <span className='text-[#FF9F0D]'>About</span>
+                    </div>
                 </div>
-               
-                
             </div>
-             
-        </div> 
-        {/* //aboutus */}
-        <div>
-           <div className='ml-[0px] w-[400px] h-[5px] pt-[10px] '> </div>
-            <Image src={Aboutus} alt="aboutus"></Image>
-        </div>
-           
 
-        <div className="bg-white">
-            <div className="absolute top-[600px] left-[800px]">
-                <p className="font-semibold text-[#FF9F0D]"> About us</p>
-                <p className="font-extrabold text-[30px] text-black"> Food is an important part  <br/> Of a balanced Diet</p>
-                <p className="text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam<br/> pellentesque bibendum non dui volutpat fringilla bibendum. Urna, elit<br/> augue urna, vitae feugiat pretium donec id elementum. Ultrices mattis<br/> vitae mus risus. Lacus nisi, et ac dapibus sit eu velit in consequat.</p>      
+            {/* About Us Section */}
+            <div className="container mx-auto px-4 py-10 flex flex-col md:flex-row items-center gap-10">
+                <Image src={Aboutus} alt="About Us" className="w-full md:w-1/2" />
+                <div className="md:w-1/2">
+                    <p className="text-[#FF9F0D] font-semibold">About us</p>
+                    <h2 className="text-2xl md:text-4xl font-extrabold text-black leading-tight">Food is an important part of a balanced diet</h2>
+                    <p className="text-gray-500 mt-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam pellentesque bibendum non dui volutpat fringilla bibendum...</p>
+                </div>
             </div>
-        </div>
-           
-           
-           {/* //Whychose */}
-           
-          <div>
-            <div className='ml-[0px] w-[400px] h-[5px] pt-[100px] '> </div>
-            <Image src={Whychose} alt="wcu"></Image>
-          </div>
-          
-          {/* Team Member */}
-          
-          <div className="bg-[#FF9F0D] h-[300px]  text-white ">
-           <div className="flex ml-[0px] mt-[10px] ">
-           <div className=" row mt-4 ">
-          </div>
-          
-          <div className="flex pl-[600px]  mt-[30px] ">
-            <h4 className="text-[30px]">Team Member</h4> 
-            <div className="row">
-            </div> 
-            </div>
-            <div className="absolute ml-[570px] mt-[80px] flex">
-             <p className="row text-[10px]">Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/> Varius sed pharetra dictum
-                neque massa congue.</p>
-            </div>
-            
-            {/* MarkHenry */}
-            <div className='ml-[10px] w-[400px] h-[10px] absolute top-[2350px] '>
-                <Image src={MarkHenry} alt="Mark Henry"></Image>
-            </div>   
-            <div className=" absolute font-[10px] text-black top-[2750px] ml-[120px]">
-                <p className="text-[15px]">Mark Henry</p>
-            </div>
-            <div className=" absolute font-[10px] text-black top-[2770px] ml-[135px]">
-                <p className="text-[15px]">Owner</p>
-            </div>
-             {/*LuckyHelen */}
-            <div className='ml-[350px] w-[400px] h-[10px] absolute top-[2350px] '>
-                <Image src={LuckyHelen} alt="Lucky Helen"></Image>
-            </div> 
-            <div className=" absolute font-[10px] text-black top-[2750px] ml-[455px]">
-                <p className="text-[15px]">Lucky Helen</p>
-            </div>
-            <div className=" absolute font-[10px] text-black top-[2770px] ml-[475px]">
-                <p className="text-[15px]">Chef</p> 
-            </div>
-             {/* MoonHenry */} 
-           <div className='ml-[680px] w-[400px] h-[10px] absolute top-[2350px] '>
-              <Image src={MoonHenry} alt="Moon Henry"></Image>
-           </div> 
-           <div className=" absolute font-[10px] text-black top-[2750px] ml-[815px]">
-                <p className="text-[15px]">Moon Henry</p>
-            </div>
-            <div className=" absolute font-[10px] text-black top-[2770px] ml-[835px]">
-                <p className="text-[15px]">Founder</p> 
-            </div> 
-             
-            {/* TomMonrow */} 
-            <div className='ml-[1010px] w-[400px] h-[10px] absolute top-[2350px] '>
-              <Image src={TomMonrow} alt="Tom Monrow"></Image>
-            </div>
-            <div className=" absolute font-[10px] text-black top-[2750px] ml-[1035px]">
-                <p className="text-[15px]">Tom Monrow</p>
-            </div>
-            <div className=" absolute font-[10px] text-black top-[2770px] ml-[1035px]">
-                <p className="text-[15px]">Specialist</p> 
-            </div> 
-            <div className=" text-[#FF9F0D] absolute font-[10px] top-[2870px] ml-[11px]">
-                <p className="text-[15px]">Testimonials</p> 
-            </div>
-            <div className=" text-black -[#FF9F0D] absolute font-[10px] top-[2900px] ml-[15px]">
-            <h4 className="font-semibold text-[30px]"> What our client are saying</h4>
-            </div> 
-            
-            <div className='ml-[430px] w-[400px] h-[10px] absolute top-[2950px] '>
-              <Image src={Ellipse6} alt="Ellipse 6"></Image>
-            </div>
-            <div className=" text-black -[#FF9F0D] absolute font-[10px] top-[3100px] ml-[160px]">
-             <p className="text-[15px]"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam pellentesque<br/>    
-                bibendum non dui volutpat fringilla bibendum. Urna, elit augue urna, vitae feugiat<br/>  pretium donec id elementum. Ultrices mattis sed vitae mus risus. Lacus nisi, et ac<br/>  dapibus sit eu velit in consequat.</p>
-            </div>
-            
-            <div className=" text-black -[#FF9F0D] absolute font-[10px] top-[3240px] ml-[400px]">
-              <h4 className="font-semibold text-[30px]"> Alamin Hasan</h4>
-            </div> 
-           
-            <div className=" text-black -[#FF9F0D] absolute font-[10px] top-[3280px] ml-[440px]">
-              <h4 className=" text-[15px]"> Food Specialist</h4>
-            </div> 
-       
-            <div className=" text-black -[#FF9F0D] absolute font-[10px] top-[3300px] ml-[250px]">
-            <h4 className="font-semibold text-[50px]"> Our Food Menu</h4>
-            </div>  
-               
-        </div>
-                
-        
-          </div>
-          <div className="absolute ml-[400px] mt-[30px] flex">
-          </div>
 
-         <div className="absolute top-[3450px] ">
-         <Footer/>
-         </div>
-      
-        
-      </section>
-       )
- }
-  
+            {/* Why Choose Us Section */}
+            <div className="container mx-auto px-4 py-10">
+                <Image src={Whychose} alt="Why Choose Us" className="w-full" />
+            </div>
+
+            {/* Team Members Section */}
+            <div className="bg-[#FF9F0D] text-white py-12">
+                <div className="text-center">
+                    <h2 className="text-3xl font-semibold">Team Members</h2>
+                    <p className="mt-2 text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+                </div>
+                <div className="container mx-auto px-4 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
+                    {[
+                        { image: MarkHenry, name: "Mark Henry", role: "Owner" },
+                        { image: LuckyHelen, name: "Lucky Helen", role: "Chef" },
+                        { image: MoonHenry, name: "Moon Henry", role: "Founder" },
+                        { image: TomMonrow, name: "Tom Monrow", role: "Specialist" }
+                    ].map((member, index) => (
+                        <div key={index} className="flex flex-col items-center">
+                            <Image src={member.image} alt={member.name} className="w-32 h-32 rounded-full" />
+                            <h3 className="mt-4 text-lg font-semibold">{member.name}</h3>
+                            <p className="text-sm">{member.role}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            {/* Testimonials Section */}
+            <div className="container mx-auto px-4 py-10 text-center">
+                <h2 className="text-[#FF9F0D] text-lg font-semibold">Testimonials</h2>
+                <h3 className="text-2xl font-bold text-black">What our clients are saying</h3>
+                <div className="flex flex-col items-center mt-6">
+                    <Image src={Ellipse6} alt="Client Image" className="w-16 h-16 rounded-full" />
+                    <p className="text-gray-500 mt-4 max-w-2xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam pellentesque bibendum...</p>
+                    <h4 className="mt-4 text-lg font-semibold">Alamin Hasan</h4>
+                    <p className="text-sm">Food Specialist</p>
+                </div>
+            </div>
+
+            {/* Footer */}
+            <Footer />
+        </section>
+    );
+}
+

@@ -9,6 +9,7 @@ export async function getFoodData() {
          price,
          description,
          category,
+         quantity,
          "imageURL":image.asset->url
          
         }
