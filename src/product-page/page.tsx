@@ -26,7 +26,7 @@ export default function ProductList() {
 function ProductContent() {
   const searchParams = useSearchParams()
   const [quantity, setQuantity] = useState<number>(1);
-  const [wishlist, setWishlist] = useState<FoodData| null>(null);
+ 
   const [product, setProduct] = useState<FoodData | null>(null)
   const [error, setError] = useState<string | null>(null)
   const router = useRouter();
@@ -43,29 +43,12 @@ function ProductContent() {
       console.error("Error parsing product:", err);
     }
   }, [searchParams]);
-  const HandleWishlist =() => {
-    if(product){
-      const Wishlist =localStorage.getItem(" wishlist") || "[]";
-      const wishlistItems:  FoodData[] = JSON.parse(Wishlist);
-      const isProductInWishlist = wishlistItems.some(
-        (item) => item._id === product._id // Assuming `id` is a unique identifier
-      );
-      if (!isProductInWishlist) {
-        wishlistItems.push(product);
-        localStorage.setItem("wishlist", JSON.stringify(wishlistItems));
-      }
-      if (setWishlist) {
-        setWishlist(product); // Ensure setWishlist is defined and used correctly
-      }
+  
+      
+      
 
       
-    }
-    setWishlist(product);
-    
-    localStorage.setItem("wishlist", JSON.stringify(product));
-    router.push("/wishlistpage");
-  
-  }
+   
 
   const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = Math.max(0, Number(e.target.value)); // Ensure quantity is at least 1

@@ -6,9 +6,11 @@ import React from "react";
 // import Image from "next/image";
 // import cartimage1 from "@/images/products/Product Image (1).png"
 // import cartimage2 from "@/images/products/aboutpageImage2.png"
-import Checkout from "@/actions/checkout";
+
 
 import { useRouter } from "next/navigation";
+import { stat } from "fs";
+import { client } from "../../../sanityClient";
 
 
 interface Product {
@@ -77,10 +79,27 @@ const Cart = () => {
     localStorage.setItem("cartpage", JSON.stringify(updatedCart));
     calculateTotalPrice(updatedCart);
   };
-  const handleCheckout = () => {
-    
-    Checkout(cartItems, customerInfo)
-    
+  const handleCheckout = async () => {
+    const orderData ={
+      _type: "order",
+      name : customerInfo.name,
+      email: customerInfo.email,
+      phone: customerInfo.phone,
+      address: customerInfo.address,
+      cartItems: cartItems.map(item =>({
+        _type: "reference",
+        _ref: item._id
+      })),
+      totalPrice: totalPrice,
+      orderDate: new Date().toISOString()
+    } 
+    try{
+      await client.create(orderData)
+      localStorage.removeItem("cartpage")
+      router.push("/orderpage")
+    }catch (err){
+      console.error("Error creating order:", err);
+    }
   }
 
   return (

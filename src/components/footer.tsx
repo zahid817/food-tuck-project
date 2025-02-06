@@ -36,7 +36,7 @@ export default function Footer() {
           {/* About Us */}
           <div>
             <h4 className="font-bold">About Us</h4>
-            <p className="text-sm pt-4">Corporate clients and leisure travelers rely on us for safe, dependable, and professional service worldwide.</p>
+            <p className="text-sm pt-4">Corporate clients and leisure travelers rely on us for safe dependable and professional service worldwide</p>
             <div className="flex items-center pt-4">
               <Image src={Watch1} alt="Opening Hours" width={40} height={40} />
               <div className="pl-4">

@@ -27,12 +27,12 @@ export default function Food() {
     return (
         <section>
             <div>
-                {Array.isArray(foodData) && foodData.map((food, index) => (
+                {Array.isArray(foodData) && foodData.map((food) => (
                     <Link href={{
                         pathname:'/foodpage',
                         query: { food: JSON.stringify(foodData) }
                         }}>
-                        key={index}
+                        key={food._id}
                         <p>{food.imageURL && <Image width={305} height={375} src={food.imageURL} alt="image" className='xl:h-[300px] lg:h-[200px] md:h-[200px]' ></Image>}</p>
                         <p>{food.name}</p>
                         <p>{food.description}</p>
