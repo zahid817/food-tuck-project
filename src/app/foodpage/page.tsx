@@ -34,7 +34,7 @@ export default function FoodList() {
         }
     } catch (error) {
         ('Error loading product data')
-        console.error(error)
+        console.error("error",error)
     }
 }, [searchParams])
 
