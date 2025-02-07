@@ -1,6 +1,5 @@
 // components/Hero.tsx
 "use client";
-
 import H1 from "@/images/productsImages/H1.png"
 import heroImage from "@/images/productsImages/unsplash_qom5MPOER-I.png"
 import Image from "next/image";

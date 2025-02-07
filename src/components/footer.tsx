@@ -1,4 +1,3 @@
-
 "use client";
 import Image from "next/image";
 import Link from "next/link";
@@ -14,9 +13,9 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between text-center md:text-left">
           <div>
             <h4 className="text-2xl font-semibold">
-              <span className="text-[#FF9F0D]">St</span>ill You Need Our Support?
+              <span className="text-[#FF9F0D]">St</span>ill You Need Our Support
             </h4>
-            <p className="text-sm pt-2">Don't wait, make a smart & logical quote here. It's pretty easy.</p>
+            <p className="text-sm pt-2">Dont wait make a smart & logical quote here Its pretty easy</p>
             <div className="border-b border-yellow-300 my-4 w-full md:w-[600px]"></div>
           </div>
           <div className="mt-4 md:mt-0">

@@ -26,7 +26,6 @@ export default function ProductList() {
 function ProductContent() {
   const searchParams = useSearchParams()
   const [quantity, setQuantity] = useState<number>(1);
- 
   const [product, setProduct] = useState<FoodData | null>(null)
   const [error, setError] = useState<string | null>(null)
   const router = useRouter();

@@ -24,9 +24,7 @@ export default function FoodList() {
   const [foodData, setFoodData] = useState<FoodData |null>(null);
   const [quantity, setQuantity] = useState<number>(1);
   const searchParams = useSearchParams();
-
   const router = useRouter()
-
   useEffect(() => {
     try {
         const foodparam= searchParams.get('food')
@@ -36,7 +34,7 @@ export default function FoodList() {
         }
     } catch (error) {
         ('Error loading product data')
-        console.error('Error parsing product:', error)
+        console.error(error)
     }
 }, [searchParams])
 
