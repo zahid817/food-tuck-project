@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useSearchParams , useRouter} from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
 import Image from "next/image";
@@ -10,36 +10,35 @@ import Image from "next/image";
 
 
 interface FoodData {
-    _id: string;
-    imageURL: string;
-    name:string
-    price: number;
-    description:string;
-    quantity: number;  
+  _id: string;
+  imageURL: string;
+  name: string
+  price: number;
+  description: string;
+  quantity: number;
 }
 
 export default function FoodList() {
 
 
-  const [foodData, setFoodData] = useState<FoodData |null>(null);
+  const [foodData, setFoodData] = useState<FoodData | null>(null);
   const [quantity, setQuantity] = useState<number>(1);
   const searchParams = useSearchParams();
   const router = useRouter()
   useEffect(() => {
     try {
-        const foodparam= searchParams.get('food')
-        if (foodparam) {
-            const parsedfood = JSON.parse(foodparam)
-            setFoodData(parsedfood)
-        }
+      const foodparam = searchParams.get('food')
+      if (foodparam) {
+        const parsedfood = JSON.parse(foodparam)
+        setFoodData(parsedfood)
+      }
     } catch (error) {
-        ('Error loading product data')
-        console.error("error",error)
+      console.error('Error loading product data:',error); // Log the error message AND the actual error object
     }
-}, [searchParams])
+  }, [searchParams])
 
 
-  const handleQuantityChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+  const handleQuantityChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = Math.max(1, Number(e.target.value)); // Ensure quantity is at least 1
     setQuantity(value);
   };
@@ -60,7 +59,7 @@ export default function FoodList() {
         cartItems[existingItemIndex]._id += quantity;
       } else {
         // Otherwise, add the new product to the cart with the selected quantity
-        cartItems.push({...foodData , quantity});
+        cartItems.push({ ...foodData, quantity });
       }
 
       // Save the updated cart to localStorage
@@ -70,13 +69,13 @@ export default function FoodList() {
       router.push("/cartpage");
     }
   };
-  
+
 
 
   return (
     <>
       <section className=" ">
-      <Card className="flex-col md:flex-row gap-8 items-center bg-[#e9d5d6] ">
+        <Card className="flex-col md:flex-row gap-8 items-center bg-[#e9d5d6] ">
           <div className="flex flex-col md:flex-row w-full">
             <CardHeader className="w-full md:w-1/2 h-auto">
               {foodData && <Image width={305} height={375} src={foodData.imageURL} alt="image" className="w-full h-auto object-cover"></Image>}
@@ -98,8 +97,8 @@ export default function FoodList() {
               </CardDescription>
               <CardDescription className="text-black text-sm md:text-base ml-10 gap-[200px] mb-">Features: {foodData?.description}
 
-            </CardDescription>
-              <button  onClick={handleAddToCart} className="w-full md:w-[146px] h-[56px] bg-[#a71d20]  text-white mt-4 md:mt-11 ml-10">
+              </CardDescription>
+              <button onClick={handleAddToCart} className="w-full md:w-[146px] h-[56px] bg-[#a71d20]  text-white mt-4 md:mt-11 ml-10">
                 Add to cart
               </button>
               <button>
